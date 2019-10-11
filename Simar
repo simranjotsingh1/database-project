@@ -1,0 +1,32 @@
+			create table material1(
+			material_id varchar(20) ,
+			material_name varchar(20) not null,
+			material_price money,
+			Primary key(material_id)
+			);
+	 
+   
+    CREATE PROCEDURE dbo.Table_material
+@material_id varchar(20),
+@material_name varchar(20),
+@material_price money
+AS
+BEGIN
+    SET NOCOUNT ON;
+    INSERT INTO material1 (material_id,material_name, material_price) 
+     VALUES (@material_id,@material_name, @material_price);
+END
+GO
+ 
+EXEC dbo.Table_material'M101', 'aluminium',2000
+EXEC dbo.Table_material 'M102', 'silver',200
+EXEC dbo.Table_material 'M103', 'pure_metal',4200
+EXEC dbo.Table_material 'M104', 'semi-metal',700
+EXEC dbo.Table_material 'M105', 'magnesium',900
+EXEC dbo.Table_material 'M106', 'carbon_fibres',3680
+EXEC dbo.Table_material 'M107', 'coating',720
+EXEC dbo.Table_material 'M108', 'mixtureoftwometal',500
+EXEC dbo.Table_material 'M109', 'aluminiumcyanite',5000
+EXEC dbo.Table_material 'M110', 'alloy',6500
+
+select * from material1;
