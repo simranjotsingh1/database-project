@@ -37,6 +37,41 @@ create table tyre(
 			tyre_price money,
 			Primary Key(tyre_id)
 			
+			
+	create table interior(
+			engine_id int identity (1,1) primary key,
+			engine_horsepower varchar(20) not null,
+			engine_Type varchar(20) not null,
+			Price money
+			);
+
+Alter table interior
+Alter column engine_horsepower int;
+
+CREATE PROCEDURE dbo.Table_interior
+@engine_horsepower int,
+@engine_type varchar(20),
+@Price money
+AS
+BEGIN
+    SET NOCOUNT ON;
+    INSERT INTO interior (engine_horsepower, engine_type,Price) 
+    VALUES (@engine_horsepower, @engine_type,@Price);
+END
+GO
+ 
+EXEC dbo.Table_interior 750, 'Rocket',12000
+EXEC dbo.Table_interior 430, 'Petrol',8000
+EXEC dbo.Table_interior 235, 'Diesel',6000
+EXEC dbo.Table_interior 140, 'Petrol',4249
+EXEC dbo.Table_interior 746, 'Rocket',11199
+EXEC dbo.Table_interior 345, 'Diesel',7585
+EXEC dbo.Table_interior 245, 'Diesel',5045
+EXEC dbo.Table_interior 423, 'Petrol',6785
+
+select * from interior;
+
+			
 			);
  CREATE PROCEDURE dbo.Table_tyre
 @tyre_id varchar(20),
