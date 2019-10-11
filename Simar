@@ -30,3 +30,66 @@ EXEC dbo.Table_material 'M109', 'aluminiumcyanite',5000
 EXEC dbo.Table_material 'M110', 'alloy',6500
 
 select * from material1;
+
+create table tyre(
+			tyre_id varchar(20) not null,
+			tyre_name varchar(20) not null,
+			tyre_price money,
+			Primary Key(tyre_id)
+			
+			);
+ CREATE PROCEDURE dbo.Table_tyre
+@tyre_id varchar(20),
+@tyre_name varchar(20),
+@tyre_price money
+AS
+BEGIN
+    SET NOCOUNT ON;
+    INSERT INTO tyre(tyre_id,tyre_name, tyre_price) 
+     VALUES (@tyre_id,@tyre_name, @tyre_price);
+END
+GO
+
+EXEC dbo.Table_tyre'T101', 'MRF',500
+EXEC dbo.Table_tyre 'T102', 'CEAT',400
+EXEC dbo.Table_tyre 'T103', 'MICHELIN',800
+EXEC dbo.Table_tyre 'T104', ' PIRELLI',70
+EXEC dbo.Table_tyre 'T105', 'COOPER',90
+EXEC dbo.Table_tyre 'T106', 'GOODYEAR',380
+EXEC dbo.Table_tyre 'T107', 'CONTINENTAL',430
+EXEC dbo.Table_tyre 'T108', 'DUNLOP',464
+EXEC dbo.Table_tyre 'T109', 'BFGOODRICH',460
+EXEC dbo.Table_tyre 'T110', ' BRIDGESTONE',560
+
+select * from tyre;
+
+create table glass(
+			glass_name varchar(20) not null,
+			glass_type varchar(20) not null,
+			glass_price money
+			Primary key(glass_name)
+			);
+			
+
+ CREATE PROCEDURE dbo.Table_glass
+@glass_name varchar(20),
+@glass_type varchar(20),
+@glass_price money
+AS
+BEGIN
+    SET NOCOUNT ON;
+    INSERT INTO glass(glass_name,glass_type, glass_price) 
+     VALUES (@glass_name,@glass_type, @glass_price);
+END
+GO
+
+EXEC dbo.Table_glass'Annealed', 'Float',100
+EXEC dbo.Table_glass 'Strengthened', 'Chromatic',400
+EXEC dbo.Table_glass 'Toughened', 'Toughened',730
+EXEC dbo.Table_glass ' Tempered', 'Tinted',70
+EXEC dbo.Table_glass 'Bulletproof', 'Shatterproof',900
+EXEC dbo.Table_glass ' Laminated', 'Laminated',380
+
+Select * from glass;
+
+
